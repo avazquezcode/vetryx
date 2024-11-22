@@ -4,7 +4,7 @@
 <a href="https://goreportcard.com/report/github.com/avazquezcode/govetryx"><img src="https://goreportcard.com/badge/github.com/avazquezcode/govetryx" alt="Go Report Card" /></a>
 
 > [!NOTE]  
-> This is a really simple (toy) language, just developed for fun.
+> This is a really simple (toy) language, just developed for fun a few months ago.
 
 ## Vetryx
 After reading the **AMAZING**: [Crafting Interpreters](https://www.amazon.com/dp/0990582930), I wanted to try out the ideas of the first half of the book (Tree-Walk interpreter).
