@@ -1,0 +1,11 @@
+services:
+  vetryx-api:
+    build:
+      context: .
+      dockerfile: ./build/docker/local/Dockerfile
+    ports:
+      - "8080:8080"  
+    volumes:
+      - ./:/app
+    environment:
+        - ALLOWED_ORIGIN=*
