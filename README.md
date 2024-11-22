@@ -1,4 +1,3 @@
-# GoVetryx
 [![Go](https://github.com/avazquezcode/vetryx/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/avazquezcode/vetryx/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/avazquezcode/vetryx/graph/badge.svg?token=BU2ZL47MNK)](https://codecov.io/gh/avazquezcode/vetryx)
 <a href="https://goreportcard.com/report/github.com/avazquezcode/vetryx"><img src="https://goreportcard.com/badge/github.com/avazquezcode/vetryx" alt="Go Report Card" /></a>
