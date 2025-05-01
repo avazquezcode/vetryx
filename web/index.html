@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vetryx WASM Interpreter</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="wasm_exec.js"></script>
+    <title>Vetryx Playground</title>
+    <link rel="stylesheet" href="styles.css?v=2">
+    <script src="wasm_exec.js?v=2"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
-    <script src="vetryx-language.js"></script>
-    <script src="examples.js"></script>
-    <script src="app.js"></script>
+    <script src="vetryx-language.js?v=2"></script>
+    <script src="examples.js?v=2"></script>
+    <script src="app.js?v=2" defer></script>
 </head>
 <body>
     <div class="header">
-        <h1>Vetryx WASM Interpreter</h1>
+        <h1>Vetryx Playground</h1>
         <div class="code-selector">
             <label for="codeExamples">Example:</label>
             <select id="codeExamples" onchange="loadExample()">
@@ -40,7 +40,7 @@
         <p>
             Vetryx is a toy programming language. This is a playground to try it out :)
             <br>
-            <small>⚠️ This was developed just for fun (with not other intention).</small>
+            <small>⚠️ This was developed just for fun (with no other intention).</small>
             <br>
             <a href="https://github.com/avazquezcode/vetryx" target="_blank">Source Code (MIT)</a>  
         </p>

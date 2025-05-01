@@ -1,18 +1,14 @@
 // Initialize Monaco Editor
 require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs' }});
-require(['vs/editor/editor.main'], function() {
-    // Initialize Vetryx language
+require(['vs/editor/editor.main'], function () {
     initVetryxLanguage();
 
-    // Create editor instance
     const editor = monaco.editor.create(document.getElementById('editor'), {
-        value: '',  // Start with empty editor
-        language: 'vetryx',  // Use our custom Vetryx language
+        value: '',
+        language: 'vetryx',
         theme: 'vs-dark',
         automaticLayout: true,
-        minimap: {
-            enabled: false
-        },
+        minimap: { enabled: false },
         fontSize: 14,
         lineNumbers: 'on',
         roundedSelection: false,
@@ -20,24 +16,30 @@ require(['vs/editor/editor.main'], function() {
         readOnly: false,
         cursorStyle: 'line',
         tabSize: 4,
-        insertSpaces: true
+        insertSpaces: true,
+        wordWrap: 'on',
+        wrappingStrategy: 'advanced',
+        fixedOverflowWidgets: true
     });
 
-    // Make editor available globally
+    window.addEventListener('resize', () => {
+        editor.layout();
+    });
+
     window.editor = editor;
 
-    // Load hello world example
     fetch('examples/helloworld.vx')
         .then(response => response.text())
         .then(code => {
             editor.setValue(code);
+            setTimeout(() => editor.layout(), 0);
         })
         .catch(error => {
             console.error('Error loading hello world example:', error);
         });
 });
 
-// Initialize the WASM module
+// Initialize WASM
 const go = new Go();
 WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject)
     .then((result) => {
@@ -47,7 +49,7 @@ WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject)
 function runCode() {
     const code = window.editor.getValue();
     const output = document.getElementById('output');
-    
+
     try {
         const result = window.compileAndRun(code);
         if (result.error) {
@@ -60,8 +62,7 @@ function runCode() {
     }
 }
 
-// Add keyboard shortcut (Ctrl+Enter or Cmd+Enter)
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
         runCode();
     }
