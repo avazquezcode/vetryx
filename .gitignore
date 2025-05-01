@@ -5,5 +5,4 @@ tmp
 build.sh
 
 # WASM build artifacts
-build/wasm/main.wasm
-build/wasm/wasm_exec.js
+build/*
