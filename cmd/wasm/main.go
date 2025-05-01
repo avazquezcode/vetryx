@@ -8,9 +8,9 @@ import (
 )
 
 func main() {
-	// Register the functions that will be called from JavaScript
+	// Register the functions that will be called from JavaScript.
 	wasm.RegisterFunctions()
 
-	// Keep the program running
+	// Keep the program running.
 	select {}
-} 
+}
