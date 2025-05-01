@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vetryx - WASM Interpreter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #1e1e1e;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        #editor {
+            flex: 1;
+            height: 100%;
+        }
+        .output-container {
+            width: 300px;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .output-container h2 {
+            margin: 0 0 1rem 0;
+            font-size: 1.2rem;
+            color: #d4d4d4;
+        }
+        #output {
+            flex: 1;
+            background-color: #252526;
+            padding: 1rem;
+            font-family: 'Consolas', 'Monaco', monospace;
+            white-space: pre-wrap;
+            overflow-y: auto;
+            border-radius: 4px;
+        }
+        .button-container {
+            margin-top: 1rem;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #0e639c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #1177bb;
+        }
+        .error {
+            color: #f48771;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Vetryx - WASM Interpreter</h1>
+    </div>
+    <div class="container">
+        <div id="editor"></div>
+        <div class="output-container">
+            <h2>Output</h2>
+            <div id="output"></div>
+            <div class="button-container">
+                <button onclick="runCode()">Run Code</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="wasm_exec.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
+    <script>
+        // Initialize Monaco Editor
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs' }});
+        require(['vs/editor/editor.main'], function() {
+            // Create editor instance
+            const editor = monaco.editor.create(document.getElementById('editor'), {
+                value: '// Enter your Vetryx code here\n',
+                language: 'javascript', // We'll use JavaScript highlighting for now
+                theme: 'vs-dark',
+                automaticLayout: true,
+                minimap: {
+                    enabled: false
+                },
+                fontSize: 14,
+                lineNumbers: 'on',
+                roundedSelection: false,
+                scrollBeyondLastLine: false,
+                readOnly: false,
+                cursorStyle: 'line',
+                tabSize: 4,
+                insertSpaces: true
+            });
+
+            // Make editor available globally
+            window.editor = editor;
+        });
+
+        // Initialize the WASM module
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject)
+            .then((result) => {
+                go.run(result.instance);
+            });
+
+        function runCode() {
+            const code = window.editor.getValue();
+            const output = document.getElementById('output');
+            
+            try {
+                const result = window.compileAndRun(code);
+                if (result.error) {
+                    output.innerHTML = `<span class="error">Error: ${result.error}</span>`;
+                } else {
+                    output.textContent = result.output;
+                }
+            } catch (error) {
+                output.innerHTML = `<span class="error">Error: ${error.message}</span>`;
+            }
+        }
+
+        // Add keyboard shortcut (Ctrl+Enter or Cmd+Enter)
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                runCode();
+            }
+        });
+    </script>
+</body>
+</html> 

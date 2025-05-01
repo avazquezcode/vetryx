@@ -3,3 +3,7 @@ bin
 tmp
 **/.DS_Store
 build.sh
+
+# WASM build artifacts
+build/wasm/main.wasm
+build/wasm/wasm_exec.js
