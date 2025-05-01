@@ -1,0 +1,12 @@
+## Recursion example
+
+fn recursion(v) {
+    if v <= 0 {
+        return;
+    }
+    print v;
+    recursion(v-1);
+}
+
+dec v = 10;
+recursion(v);
