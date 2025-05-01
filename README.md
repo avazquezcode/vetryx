@@ -22,5 +22,8 @@ Some things I changed in comparison to the _Lox_ language:
 - [x] Added support for sleep, min and max native fns
 - [x] Support `break` and `continue` in while loop
 
+## Playground
+You can give it a try, using this small [playground](https://agustinvazquez.me/vetryx) (using WebAssembly).
+
 ## Ack
 Thanks a lot Robert Nystrom for writing such a pleasant book to read. One of the nicest books about software that I've read in the past years...
