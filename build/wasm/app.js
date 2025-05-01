@@ -1,10 +1,13 @@
 // Initialize Monaco Editor
 require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs' }});
 require(['vs/editor/editor.main'], function() {
+    // Initialize Vetryx language
+    initVetryxLanguage();
+
     // Create editor instance
     const editor = monaco.editor.create(document.getElementById('editor'), {
-        value: '## Enter your Vetryx code here\n',
-        language: 'python', // We'll use python highlighting for now (since it's closer in syntax).
+        value: '',  // Start with empty editor
+        language: 'vetryx',  // Use our custom Vetryx language
         theme: 'vs-dark',
         automaticLayout: true,
         minimap: {
@@ -22,6 +25,16 @@ require(['vs/editor/editor.main'], function() {
 
     // Make editor available globally
     window.editor = editor;
+
+    // Load hello world example
+    fetch('examples/helloworld.vx')
+        .then(response => response.text())
+        .then(code => {
+            editor.setValue(code);
+        })
+        .catch(error => {
+            console.error('Error loading hello world example:', error);
+        });
 });
 
 // Initialize the WASM module

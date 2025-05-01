@@ -11,6 +11,8 @@
             <label for="codeExamples">Examples:</label>
             <select id="codeExamples" onchange="loadExample()">
                 <option value="">Select an example...</option>
+                <option value="emptyeditor">Empty Editor</option>
+                <option selected value="helloworld">Hello World</option>
                 <option value="fibonacci">Fibonacci Sequence</option>
                 <option value="minmax">Min/Max</option>
                 <option value="closure">Closure</option>
@@ -31,6 +33,7 @@
     <script src="wasm_exec.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
     <script src="examples.js"></script>
+    <script src="vetryx-language.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

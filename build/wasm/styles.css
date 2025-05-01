@@ -90,7 +90,9 @@ body {
 }
 
 .output-container {
-    width: 400px;
+    width: 25vw;
+    min-width: 300px;
+    max-width: 500px;
     background-color: #1e1e1e;
     color: #d4d4d4;
     padding: 1rem;

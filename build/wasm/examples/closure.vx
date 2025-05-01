@@ -1,4 +1,5 @@
 ## Closure example
+
 fn buildCounter() {
     i := 0;
 
@@ -15,4 +16,4 @@ counter = buildCounter();
 
 counter(); # Prints 1
 counter(); # Prints 2
-counter(); # Prints 3 
+counter(); # Prints 3
