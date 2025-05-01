@@ -1,15 +1,3 @@
-build-local:
-	docker-compose build
-
-build-prod:
-	docker buildx build --platform linux/amd64 -t go-vetryx -f build/docker/prod/Dockerfile --load .
-
-run-local:
-	docker-compose up -d
-
-run-prod:
-	docker run -p 8080:8080 go-vetryx
-
 test: |
 	go test -v ./... -covermode=count -coverprofile=coverage.out && go tool cover -func=coverage.out -o=coverage.out
 
@@ -18,3 +6,17 @@ html-cov:
 
 run-txt:
 	go run cmd/filerunner/main.go test.txt
+
+.PHONY: build-wasm
+build-wasm:
+	cp -a web/ build/wasm
+	GOOS=js GOARCH=wasm go build -o build/wasm/main.wasm cmd/wasm/main.go
+	cp "$(shell go env GOROOT)/lib/wasm/wasm_exec.js" build/wasm/
+
+.PHONY: serve-wasm
+serve-wasm: build-wasm
+	cd build/wasm && python3 -m http.server 8080
+
+.PHONY: stop-wasm
+stop-wasm:
+	@lsof -ti:8080 | xargs kill -9 2>/dev/null || true

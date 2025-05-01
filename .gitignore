@@ -3,3 +3,6 @@ bin
 tmp
 **/.DS_Store
 build.sh
+
+# WASM build artifacts
+build/*

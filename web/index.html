@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vetryx - WASM Interpreter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Vetryx - WASM Interpreter</h1>
+        <div class="code-selector">
+            <label for="codeExamples">Examples:</label>
+            <select id="codeExamples" onchange="loadExample()">
+                <option value="">Select an example...</option>
+                <option value="emptyeditor">Empty Editor</option>
+                <option selected value="helloworld">Hello World</option>
+                <option value="fibonacci">Fibonacci Sequence</option>
+                <option value="minmax">Min/Max</option>
+                <option value="closure">Closure</option>
+            </select>
+        </div>
+    </div>
+    <div class="container">
+        <div id="editor"></div>
+        <div class="output-container">
+            <h2>Output</h2>
+            <div id="output"></div>
+            <div class="button-container">
+                <button onclick="runCode()">Run Code</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="wasm_exec.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
+    <script src="examples.js"></script>
+    <script src="vetryx-language.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
