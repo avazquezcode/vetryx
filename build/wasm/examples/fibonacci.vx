@@ -25,4 +25,4 @@ fn fibonacci(n) {
     return b;
 }
 
-print fibonacci(10); 
+print fibonacci(10);
