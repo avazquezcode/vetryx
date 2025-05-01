@@ -1,3 +1,7 @@
+.PHONY: build
+build:
+	go build -o build/filerunner cmd/filerunner/main.go
+
 test: |
 	go test -v ./... -covermode=count -coverprofile=coverage.out && go tool cover -func=coverage.out -o=coverage.out
 
