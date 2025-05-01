@@ -140,3 +140,35 @@ button:hover {
 .error {
     color: #f48771;
 }
+
+.footer {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid #3c3c3c;
+}
+
+.footer p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.footer a {
+    color: #0e639c;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer a:hover {
+    color: #1177bb;
+    text-decoration: underline;
+}
+
+.footer small {
+    color: #888;
+    font-style: italic;
+    display: inline-block;
+    margin: 0.5rem 0;
+}

@@ -1,21 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Vetryx - WASM Interpreter</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vetryx WASM Interpreter</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="wasm_exec.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
+    <script src="vetryx-language.js"></script>
+    <script src="examples.js"></script>
+    <script src="app.js"></script>
 </head>
 <body>
     <div class="header">
-        <h1>Vetryx - WASM Interpreter</h1>
+        <h1>Vetryx WASM Interpreter</h1>
         <div class="code-selector">
-            <label for="codeExamples">Examples:</label>
+            <label for="codeExamples">Example:</label>
             <select id="codeExamples" onchange="loadExample()">
-                <option value="">Select an example...</option>
+                <option value="">Select an example</option>
                 <option value="emptyeditor">Empty Editor</option>
-                <option selected value="helloworld">Hello World</option>
-                <option value="fibonacci">Fibonacci Sequence</option>
-                <option value="minmax">Min/Max</option>
+                <option value="helloworld">Hello World</option>
+                <option value="fibonacci">Fibonacci</option>
                 <option value="closure">Closure</option>
+                <option value="minmax">Min Max</option>
             </select>
         </div>
     </div>
@@ -25,15 +32,18 @@
             <h2>Output</h2>
             <div id="output"></div>
             <div class="button-container">
-                <button onclick="runCode()">Run Code</button>
+                <button onclick="runCode()">Run (Ctrl+Enter)</button>
             </div>
         </div>
     </div>
-
-    <script src="wasm_exec.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
-    <script src="examples.js"></script>
-    <script src="vetryx-language.js"></script>
-    <script src="app.js"></script>
+    <footer class="footer">
+        <p>
+            Vetryx is a toy programming language. This is a playground to try it out :)
+            <br>
+            <small>⚠️ This was developed just for fun (with not other intention).</small>
+            <br>
+            <a href="https://github.com/avazquezcode/vetryx" target="_blank">Source Code (MIT)</a>  
+        </p>
+    </footer>
 </body>
 </html>
