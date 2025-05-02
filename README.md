@@ -1,3 +1,5 @@
+<img width="150" alt="image" src="https://github.com/user-attachments/assets/e2e926ff-fe1f-4af7-bad1-94d36afa2b38" />
+
 [![Go](https://github.com/avazquezcode/vetryx/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/avazquezcode/vetryx/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/avazquezcode/vetryx/graph/badge.svg?token=WUT9PBCJHV)](https://codecov.io/gh/avazquezcode/vetryx)
 <a href="https://goreportcard.com/report/github.com/avazquezcode/vetryx"><img src="https://goreportcard.com/badge/github.com/avazquezcode/vetryx" alt="Go Report Card" /></a>
