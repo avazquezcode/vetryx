@@ -22,5 +22,14 @@ Some things I changed in comparison to the _Lox_ language:
 - [x] Added support for sleep, min and max native fns
 - [x] Support `break` and `continue` in while loop
 
+## WASM playground
+To build and run the WASM playground you can execute:
+
+- Clone the repo, and then run:
+- `make build-wasm`
+- `make serve-wasm`
+
+The server with the playground will start on [http://localhost:8080](http://localhost:8080)
+
 ## Ack
 Thanks a lot Robert Nystrom for writing such a pleasant book to read. One of the nicest books about software that I've read in the past years...
