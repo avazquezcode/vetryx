@@ -22,7 +22,7 @@ Some things I changed in comparison to the _Lox_ language:
 - [x] Added support for sleep, min and max native fns
 - [x] Support `break` and `continue` in while loop
 
-## WASM playground
+## WASM Playground
 To build and run the WASM playground you can execute:
 
 - Clone the repo, and then run:
