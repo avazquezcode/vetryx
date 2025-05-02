@@ -23,6 +23,9 @@ Some things I changed in comparison to the _Lox_ language:
 - [x] Support `break` and `continue` in while loop
 
 ## WASM Playground
+<img width="1400" alt="image" src="https://github.com/user-attachments/assets/ec53a027-8832-49c8-a234-bffe562649bc" />
+
+
 To build and run the WASM playground you can execute:
 
 - Clone the repo, and then run:
